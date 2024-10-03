@@ -6,6 +6,8 @@ to do :
 """
 import mainfunction as mf
 
+score = 0
+highscore = 0
 unsigned_int_live = 0
 list_char_lettre_du_mot = []
 list_char_lettre_joueur = []
@@ -14,6 +16,9 @@ unsigned_int_indicator_victory = 0
 as_it_began = False
 
 while(1):
+    if is_it_the_first_game == True :
+        is_it_the_first_game = False
+        score = 0
     if as_it_began == True:
         unsigned_int_indicator_victory = mf.void_afficher_mot(unsigned_int_indicator_victory, list_char_lettre_joueur, list_char_lettre_joueur_fausse,list_char_lettre_du_mot)
     if as_it_began == False:
@@ -23,10 +28,11 @@ while(1):
         mf.list_char_letter_starter(list_char_lettre_du_mot,list_char_lettre_joueur)
     elif mf.bool_death_tester(unsigned_int_live) == True:
         print("vous avez perdu...")
-        break
+        if highscore < score:
+            score == highscore
     elif mf.bool_word_found(unsigned_int_indicator_victory,list_char_lettre_du_mot) == True:
         print("vous avez gagné")
-        break
+        score += 1
     else :
         char_letter_chosen = input("veuillez entrer une lettre :")
         while mf.bool_is_it_a_char(char_letter_chosen) != True:
