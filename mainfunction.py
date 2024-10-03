@@ -6,21 +6,22 @@ to do :
 """
 
 import random as rd
-
+unsigned_int_live = 0
 list_char_lettre_du_mot = []
 list_char_lettre_joueur = []
 list_char_lettre_joueur_fausse = []
-
-def 
-
+unsigned_int_indicator_victory = 0
 
 def void_afficher_mot():
     """
     fonction qui n'a aucune entré et qui affiche les lettres trouvés et cache celle qui ne l'ont pas été encore
     """
+    global unsigned_int_indicator_victory 
+    unsigned_int_indicator_victory = 0
     for char_lettre in list_char_lettre_du_mot:
         if char_lettre in list_char_lettre_joueur:
             print(char_lettre, end='')
+            unsigned_int_indicator_victory += 1
         else:
             print("_", end='')
     print(" ")
@@ -63,4 +64,20 @@ def list_char_letter_starter(string_word_to_guess):
     unsigned_int_index = rd.randint(1,len(string_word_to_guess)) - 1
     list_char_lettre_joueur.append(string_word_to_guess[unsigned_int_index])
 
-def 
+def bool_death_tester():
+    """
+    fonction qui vérifie que le joueur n'a pas perdu
+    """
+    if unsigned_int_live == 8:
+        return True
+    else :
+        return False
+    
+def bool_word_found():
+    """
+    fonction qui vérifie si le joueur n'a pas gagner
+    """
+    if unsigned_int_indicator_victory == len(list_char_lettre_du_mot):
+        return True
+    else:
+        return False
