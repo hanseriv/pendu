@@ -6,9 +6,13 @@ to do :
 """
 
 import random as rd
+
 list_char_lettre_du_mot = []
 list_char_lettre_joueur = []
 list_char_lettre_joueur_fausse = []
+
+def 
+
 
 def void_afficher_mot():
     """
@@ -59,3 +63,4 @@ def list_char_letter_starter(string_word_to_guess):
     unsigned_int_index = rd.randint(1,len(string_word_to_guess)) - 1
     list_char_lettre_joueur.append(string_word_to_guess[unsigned_int_index])
 
+def 
