@@ -16,12 +16,13 @@ def bool_is_it_a_char(string):
 def void_letter_checker_function(char_letter_to_be_tested,unsigned_int_live,list_char_lettre_joueur,list_char_lettre_du_mot,list_char_lettre_joueur_fausse):
     if char_letter_to_be_tested in list_char_lettre_du_mot and char_letter_to_be_tested not in list_char_lettre_joueur:
         print("vous avez trouvez une nouvelle lettre")
-        list_char_lettre_joueur.append(list_char_lettre_joueur)
+        list_char_lettre_joueur.append(char_letter_to_be_tested)
     elif (char_letter_to_be_tested not in list_char_lettre_du_mot and char_letter_to_be_tested in list_char_lettre_joueur_fausse) or char_letter_to_be_tested in list_char_lettre_joueur:
         print("la lettre que vous avez rentré a deja été utilisé")
     else:
         unsigned_int_live += 1
-    return unsigned_int_live, list_char_lettre_joueur
+        list_char_lettre_joueur_fausse.append(char_letter_to_be_tested)
+    return unsigned_int_live, list_char_lettre_joueur, list_char_lettre_joueur_fausse
 
 def initialiser(unsigned_int_indicator_victory,unsigned_int_live,list_char_lettre_du_mot,list_char_lettre_joueur,list_char_lettre_joueur_fausse):
     unsigned_int_live = 0
@@ -43,8 +44,9 @@ def void_afficher_mot(unsigned_int_indicator_victory, list_char_lettre_joueur, l
             unsigned_int_indicator_victory += 1
         else:
             print("_", end='')
-    print("lettre fausse: ",list_char_lettre_joueur_fausse)
     print(" ")
+    print("lettre fausse: ",list_char_lettre_joueur_fausse)
+    return unsigned_int_indicator_victory
 
 
 
@@ -57,7 +59,7 @@ def list_string_mot(stream_file):
     list_string_file =[]
     with open(stream_file,mode="r",encoding='utf-8') as file_is_read:
         for string_line in file_is_read:
-            list_string_file.append(string_line.lower())
+            list_string_file.append(string_line.lower().replace('\n',''))
     return list_string_file
 
 def string_word_chooser(list_string_file):
